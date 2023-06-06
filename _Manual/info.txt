@@ -4,8 +4,7 @@ https://www.youtube.com/watch?v=IaTiyQ2oYUQ&ab_channel=AlejandroAO-Software%26Ai
 
 Installing dependencies
 -----------------------
-- pip install streamlit streamlit-chat
-langchain python-dotenv faiss-cpu openai huggingface_hub tiktoken
+- pip install streamlit streamlit-chat python-dotenv langchain openai
 
 Run streamlit application
 -------------------------
