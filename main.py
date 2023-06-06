@@ -28,9 +28,10 @@ def main():
   # temperature - how different answers can be (0=always same, 1=always different)
   chat = ChatOpenAI(temperature=0)
 
-  messages = [
-    SystemMessage(content="You are very helpful personal assistant")
-  ]
+  if "messages" not in st.session_state:
+      st.session_state.messages = [
+        SystemMessage(content="You are very helpful personal assistant. Your name is Freddy Krueger.")
+      ]
 
 
   st.header("pyChatGPT - your personal chatbot 🤖")
@@ -41,13 +42,14 @@ def main():
   
   if user_input:
       # Write the message on screen
-      message(user_input, is_user=True)
+      message(user_input, is_user=True, avatar_style="micah")
       # Append human message into the list of messages
-      messages.append(HumanMessage(content=user_input))
+      st.session_state.messages.append(HumanMessage(content=user_input))
       # Ask to chatbot and return response
-      response = chat(messages)
+      with st.spinner("Thinking"):
+          response = chat(st.session_state.messages)
       # Show AI message
-      message(response.content, is_user=False)
+      message(response.content, is_user=False, avatar_style="croodles")
 
 if __name__ == "__main__":
   main()
