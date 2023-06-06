@@ -41,15 +41,24 @@ def main():
       #st.write(user_input)
   
   if user_input:
-      # Write the message on screen
-      message(user_input, is_user=True, avatar_style="micah")
       # Append human message into the list of messages
       st.session_state.messages.append(HumanMessage(content=user_input))
       # Ask to chatbot and return response
       with st.spinner("Thinking"):
           response = chat(st.session_state.messages)
-      # Show AI message
-      message(response.content, is_user=False, avatar_style="croodles")
+      # Append AI message into the list of messages
+      st.session_state.messages.append(AIMessage(content=response.content))
+
+  messages = st.session_state.get("messages", [])
+  # messages[1:] - start from the second message, the first is SystemMessage
+  for i, msg in enumerate(messages[1:]):  
+      if i % 2 == 0:
+          # Show user's message on screen
+          message(msg.content, is_user=True, key=str(i) + "_user", avatar_style="micah")
+      else:
+          # Show AI's message on screen
+          message(msg.content, is_user=False, key=str(i) + "_ai", avatar_style="croodles")
+
 
 if __name__ == "__main__":
   main()
