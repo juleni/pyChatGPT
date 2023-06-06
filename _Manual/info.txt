@@ -1,0 +1,29 @@
+Create a ChatGPT clone using Streamlit and LangChain
+====================================================
+https://www.youtube.com/watch?v=IaTiyQ2oYUQ&ab_channel=AlejandroAO-Software%26Ai   (42:55)
+
+Installing dependencies
+-----------------------
+- pip install streamlit pypdf2 langchain python-dotenv faiss-cpu openai huggingface_hub tiktoken
+# Install additional dependencies for Instructor - creating embeddings/vector store locally
+- pip install InstructorEmbedding sentence_transformers
+
+Run streamlit application
+-------------------------
+- streamlit run app.py
+
+Setting up local python environment:
+------------------------------------
+- pyenv local 3.8
+
+
+Installing packages using pip and virtual environments
+-------------------------------------------------------
+https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/#creating-a-virtual-environment
+
+- py -m venv venv           # create a virtual environment, the second argument is the location to create the virtual environment
+- .\venv\Scripts\activate   # Activating a virtual environment will put the virtual environment-specific python and pip executables into your shell�s PATH
+- where python              # You can confirm you�re in the virtual environment by checking the location of your Python interpreter, It should be in the env directory
+- deactivate                # If you want to switch projects or otherwise leave your virtual environment
+- py -m pip install <pck>   #  in your virtual environment you can install packages <pck>
+
